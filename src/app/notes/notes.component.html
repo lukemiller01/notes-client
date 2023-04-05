@@ -1,0 +1,15 @@
+<div class="page__container">
+    <div class="create__wrapper">
+        <div class="create__note">
+            <div class="create__note-text">
+                <h4>Take a note...</h4>
+            </div>
+        </div>
+    </div>
+    <div class="note__container">
+        <div *ngFor = "let note of notesService.notes" class="note" [ngStyle]="{'background-color': '#' + note.color}" [ngStyle]="{'background-color': '#' + note.color, 'border': note.color === 'FFFFFF' ? '3px solid lightgrey' : null }">
+            <h2>{{note.title}}</h2>
+            <p class="note__description">{{note.description}}</p>
+        </div>
+    </div>
+</div>
