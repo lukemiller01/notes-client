@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Note } from '../models/note';
 
@@ -22,8 +22,14 @@ export class NotesService {
   }
 
   // Creates a note
-  createNote(note: Note) {
-    return this.http.post(this.apiURL, note);
+  createNote(note: Note) { // TODO: remove query params and have .NET backend accept JSON body
+    var options = {
+      Title: note.title,
+      Description: note.description,
+      Color: note.color
+    };
+    var query = new HttpParams({fromObject: options}).toString()
+    return this.http.post(this.apiURL + '?' + query, note);
   }
 
   // Updates a note
@@ -38,7 +44,8 @@ export class NotesService {
 
   // Deletes a note
   deleteNote(note: Note) {
-    return this.http.delete(note.id!); // TODO: fix Asserts non-null?
+    console.log(note.id)
+    return this.http.delete(this.apiURL + '/' + note.id);
   }
 
   resetNote() {

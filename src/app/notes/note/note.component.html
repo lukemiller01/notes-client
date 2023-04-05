@@ -1,1 +1,47 @@
-<p>note works!</p>
+<div class="create__wrapper">
+  <div class="create__note">
+      <form
+        name="form"
+        #form="ngForm"
+        autocomplete="off"
+        class="create__note-text"
+        #toggleNote (click)="openNote($event)"
+        (ngSubmit)="addNote(form)"
+      >
+        <div class="form-row mb-2">
+          <div class="col">
+            <input
+              name="title"
+              #title="ngModel"
+              required
+              [(ngModel)]="notesService.note.title"
+              placeholder="Title"
+              class="form-control"
+            />
+          </div>
+          <div class="col">
+            <input
+              name="description"
+              #description="ngModel"
+              required
+              [(ngModel)]="notesService.note.description"
+              placeholder="description"
+              class="form-control"
+              *ngIf="isMenuOpen" #menu
+            />
+          </div>
+          <div class="col">
+            <input
+              name="color"
+              #color="ngModel"
+              required
+              [(ngModel)]="notesService.note.color"
+              placeholder="Color"
+              class="form-control"
+              *ngIf="isMenuOpen" #menu
+            />
+          </div>
+        </div>
+      </form>
+  </div>
+</div>

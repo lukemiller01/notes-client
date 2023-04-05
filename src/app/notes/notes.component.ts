@@ -23,7 +23,6 @@ export class NotesComponent implements OnInit {
   deleteNote(note: Note) {
     if(confirm("Are you sure you want to delete this note?")) {
       this.notesService.deleteNote(note).subscribe(c => {
-        alert("Deleted!");
         this.notesService.getNotes();
         this.notesService.resetNote();
       })

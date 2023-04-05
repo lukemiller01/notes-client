@@ -1,0 +1,19 @@
+.create__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.create__note {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+    box-shadow: 0px 0px 8px 2px rgb(0 0 0 / 25%);
+    padding: .5rem 1rem;
+    color: grey;
+}
+
+.create__note-text {
+    display: flex;
+    min-width: 40vw;
+}
